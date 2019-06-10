@@ -1,0 +1,93 @@
+#DataSource Config
+spring:
+#  datasource:
+#    url: jdbc:mysql://59.110.165.245:3306/system?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
+#    username: root
+#    password: is@ft-info-709
+#    drivername: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    initial-size: 10
+#    max-active: 20
+#    max-idle: 5
+#    min-idle: 5
+  datasource:
+      dynamic:
+        datasource:
+          master:
+            username: root
+            password: is@ft-info-709
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://59.110.165.245:3306/system?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
+          #slave:
+            #username: root
+            #password: is@ft-info-709
+            #driver-class-name: com.mysql.jdbc.Driver
+            #url: jdbc:mysql://59.110.165.245:3306/system?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
+        druid:
+          # 下面为连接池的补充设置，应用到上面所有数据源中
+          initial-size: 10
+          max-active: 20
+          min-idle: 5
+          # 配置获取连接等待超时的时间
+          max-wait: 60000
+          # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+          time-between-eviction-runs-millis: 60000
+          # 配置一个连接在池中最小生存的时间，单位是毫秒
+          min-evictable-idle-time-millis: 300000
+          validation-query: SELECT 1 FROM DUAL
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+          filters: stat,wall,log4j
+          stat:
+            log-slow-sql: true
+  redis:
+    host: localhost
+    port: 6379
+  activiti:
+    database-schema-update: true
+    history-level: full
+
+# Logger Config
+logging:
+  level:
+    com.isoft.system: debug
+  path: D:\logs\system
+
+
+#server config
+server:
+  port: 80
+  servlet:
+    path: /system
+
+#activiti
+
+#mybatis-plus
+mybatis-plus:
+  type-enums-package: com.isoft.system.enums
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      
+#http://localhost/demo/swagger-ui.html  项目路径+swagger-ui.html 是访问项目API的路径，当项目启动后可以访问。
+
+token:
+  expire:
+    seconds: 86400
+
+# 配置ws
+wss:
+  server:
+    port: 8090 # 端口
+    host: 0.0.0.0 # 地址
+mq:
+  consumer:
+    channel: consumer1
+    nameServer: 127.0.0.1:9876
+    subscribe: TopicTest
+
+file:
+  path: D:\file\

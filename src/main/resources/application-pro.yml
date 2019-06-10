@@ -1,0 +1,53 @@
+#DataSource Config
+spring:
+  datasource:
+    master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://59.110.165.245:3306/system?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: is@ft-info-709
+    slaver:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://59.110.165.245:3306/test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: root
+  redis:
+    host: localhost
+    port: 6379
+  activiti:
+    database-schema-update: true
+    history-level: full
+  jmx:
+    enabled: false
+    
+
+# Logger Config
+logging:
+  level:
+    com.isoft.offer: error
+  path: /mnt/logs/system
+
+#server config
+#server:
+#  port: 80
+#  servlet:
+#    path: /system
+
+#mybatis-plus
+mybatis-plus:
+  type-enums-package: com.isoft.system.enums
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      
+#http://localhost/demo/swagger-ui.html  项目路径+swagger-ui.html 是访问项目API的路径，当项目启动后可以访问。
+
+token:
+  expire:
+    seconds: 86400
+mq:
+  consumer:
+    channel: consumer1
+    nameServer: 127.0.0.1:9876
+    subscribe: TopicTest
