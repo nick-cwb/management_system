@@ -26,7 +26,7 @@
         <mybatisplus.version>3.0.6</mybatisplus.version>
         <java-jwt.version>3.2.0</java-jwt.version>
         <cache.version>1.0</cache.version>
-        <zookeeper.version>3.4.9</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <activiti.version>6.0.0</activiti.version>
         <rocketmq.spring.boot.version>2.0.2-SNAPSHOT</rocketmq.spring.boot.version>
         <rocketmq-version>4.3.2</rocketmq-version>
